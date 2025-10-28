@@ -1,4 +1,4 @@
-# Autonomous Self-Organizing AGI System 🧠✨
+# Autonomous Self-Organizing AGI System (INTEGRATED) 🧠✨
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange.svg)](https://pytorch.org/)
@@ -6,197 +6,136 @@
 [![No Rewards](https://img.shields.io/badge/Paradigm-Reward--Free-red.svg)](#)
 [![Self-Organizing](https://img.shields.io/badge/Behavior-Autonomous-green.svg)](#)
 
-A revolutionary artificial general intelligence architecture that **operates without external rewards, objectives, or loss functions**. This system achieves intelligent behavior through **intrinsic motivation**, **self-goal generation**, and **high-order meta-cognition**.
+A fully integrated, reward-free AGI system featuring intrinsic motivation, high-order meta-cognition, GNN-based causal reasoning, and multi-objective decision making. Now includes upgraded world modeling (residual dynamics + Transformer mixer + CPC), EMA-based consistency learning, and concrete experimental modules.
 
 ---
 
-## 🚀 Revolutionary Features
-
-### 🎯 **No External Objectives**
-- **Zero reward functions**: No external rewards, task losses, or policy objectives
-- **Self-goal emergence**: Goals arise naturally from internal dynamics
-- **Autonomous exploration**: Driven by curiosity and information-theoretic principles
-- **Intrinsic motivation only**: Powered by predictive dissonance, compression gains, and uncertainty reduction
-
-### 🧠 **High-Order Meta-Cognition**
-- **Meta-cognitive awareness**: Self-representation of knowledge states and uncertainties
-- **Learning-to-learn enhancement**: Meta-learning focused on "what to learn" rather than "how to optimize"
-- **Hypothesis space navigation**: Autonomous scientific method implementation
-- **Knowledge compression**: Minimum description length principles for elegant solutions
-
-### 🌱 **Emergent Intelligence**
-- **Self-organizing behavior**: Complex behaviors emerge from simple principles
-- **Autonomous skill discovery**: Skills develop without predefined tasks
-- **Creative problem solving**: Novel solutions through intrinsic exploration
-- **Adaptive complexity**: System complexity adapts to environmental demands
+## 🚀 What’s New (Integrated Engine)
+- GNN-based Causal Reasoning Module: structure discovery, interventions (do-operator), counterfactuals, causal effect estimation ([asagi/core/causal_reasoning.py](asagi/core/causal_reasoning.py))
+- Upgraded World Model: multi-scale residual dynamics + optional Transformer mixer + CPC self-supervision ([asagi/operational/world_model.py](asagi/operational/world_model.py))
+- Upgraded Consistency Learner: BYOL-style EMA teacher alignment, CPC-guided ([asagi/operational/consistency_learner.py](asagi/operational/consistency_learner.py))
+- Autonomous System Integrated: causal module wired in, with compute knobs ([asagi/core/autonomous_system.py](asagi/core/autonomous_system.py))
+- New Demos: integrated autonomous demo and causal discovery demo in [examples/](examples)
 
 ---
 
-## 🏗️ Architecture Overview
-
+## 🏗️ Updated Architecture Overview
 ```
-┌─────────────────────────────────────────────────────┐
-│                Meta-Cognition Layer                 │
-│  ┌─────────────────┐  ┌─────────────────────────┐   │
-│  │ Self-Reflection │  │   Goal Emergence         │   │
-│  │ - Knowledge Map │  │   - Curiosity Drive      │   │
-│  │ - Uncertainty   │  │   - Hypothesis Generation│   │
-│  │ - Complexity    │  │   - Experiment Planning  │   │
-│  └─────────────────┘  └─────────────────────────┘   │
-└─────────────────────────────────────────────────────┘
-                            ↕
-┌─────────────────────────────────────────────────────┐
-│              Intrinsic Signal Synthesizer           │
-│  ┌───────────────┐ ┌────────────┐ ┌──────────────┐  │
-│  │   Predictive  │ │Compression │ │  Uncertainty │  │
-│  │   Dissonance  │ │    Gain    │ │   Reduction  │  │
-│  └───────────────┘ └────────────┘ └──────────────┘  │
-│           ┌──────────────────────────────┐           │
-│           │      Novelty Topology       │           │
-│           └──────────────────────────────┘           │
-└─────────────────────────────────────────────────────┘
-                            ↕
-┌─────────────────────────────────────────────────────┐
-│                 Executive Layer                     │
-│  - Multi-objective Decision Making (Pareto)         │
-│  - Resource Allocation & Computation Budgeting     │
-│  - Skill Composition & Orchestration               │
-│  - Temporal Coordination Across Scales             │
-└─────────────────────────────────────────────────────┘
-                            ↕
-┌─────────────────────────────────────────────────────┐
-│               Operational Layer                     │
-│  - State Space Modeling (SSM/Mamba)                │
-│  - Internal World Simulation                       │
-│  - Consistency-Based Learning                      │
-│  - Causal Reasoning & Counterfactual Testing       │
-└─────────────────────────────────────────────────────┘
+Meta-Cognition (goals, self-reflection)
+        ↕
+Intrinsic Signal Synthesizer (dissonance, compression gain, uncertainty, novelty)
+        ↕
+Pareto Navigator (loss-free multi-objective decisions)
+        ↕
+Operational Layer
+  - World Model (Residual + Transformer Mixer + CPC)
+  - Consistency Learner (EMA Teacher Alignment)
+  - Causal Reasoning (GNN): structure, do(), counterfactuals, effects
 ```
 
----
-
-## 🔬 Core Principles
-
-### 1. **Information-Theoretic Foundation**
-- **Predictive Dissonance**: KL-divergence between model predictions and observations
-- **Compression Gain**: Reduction in description length when incorporating new hypotheses
-- **Uncertainty Flattening**: Entropy reduction in posterior distributions
-- **Novelty Topology**: Changes in representational manifold structure
-
-### 2. **Autonomous Goal Generation**
-```python
-# Goals emerge from internal dynamics, not external specification
-def emergent_goals(self, internal_state):
-    # Identify areas of high predictive dissonance
-    curiosity_map = self.compute_prediction_errors(internal_state)
-    
-    # Find knowledge gaps with high compression potential
-    compression_opportunities = self.mdl_analysis(curiosity_map)
-    
-    # Generate hypotheses and experiments
-    subgoals = self.hypothesis_generator(compression_opportunities)
-    
-    return subgoals  # No external reward needed!
-```
-
-### 3. **Multi-Objective Decision Making**
-- **Pareto Navigation**: Balance multiple intrinsic signals without scalar loss
-- **Constraint Satisfaction**: Operate within computational budgets
-- **Dynamic Prioritization**: Adapt focus based on information potential
+- Reward-free: no external reward functions, task losses, or policy objectives
+- Goals emerge from intrinsic signals and meta-cognitive analysis
+- Causal reasoning augments planning and analysis without scalar losses
 
 ---
 
-## 🚀 Quick Start
+## 🔬 Key Modules (Integrated)
+- World Model: residual blocks, optional Transformer encoder, CPC head for self-supervised temporal consistency
+- Consistency Learner: EMA teacher/student projections; alignment score used for internal coherence
+- Causal Reasoning (GNN):
+  - Variable extraction → attention-style edge scoring → directed adjacency
+  - Vectorized message passing → causal propagation
+  - Interventions do(X=x), counterfactual analysis, pairwise effect estimation
+- Meta-Cognition: self-reflection, knowledge gaps, autonomous goal generation
+- Pareto Navigator: preference learning + constraint satisfaction without scalarization
+
+---
+
+## ⚙️ Compute & Stability Knobs
+Add these to ASAGIConfig to control cost and stability:
+- causal_num_variables (default 8): increase carefully; cost ~ O(B·N²·H)
+- causal_num_layers (default 2)
+- causal_hidden_dim (default 128)
+- enable_causal_reasoning (default True)
+- world_model_use_transformer (default True)
+- world_model_depth (default 4)
+
+Recommended for single GPU/Colab:
+- N=8, layers=2, hidden=128; temperature/sparsity for adjacency; consider top-k masking for larger N.
+
+---
+
+## 🚦 Quick Start
 
 ### Installation
-
 ```bash
 git clone https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI.git
 cd Autonomous-Self-Organizing-AGI
 pip install -r requirements.txt
+pip install -e .
 ```
 
-### Basic Usage
+### Integrated Autonomous Demo
+```bash
+python examples/basic_autonomous_operation.py
+```
+Shows: intrinsic motivation (no rewards), upgraded world model (CPC), EMA consistency, GNN causal reasoning, Pareto navigation, emergent skills.
 
-```python
-from asagi import AutonomousSelfOrganizingAGI
-from asagi.config import ASAGIConfig
+### Causal Discovery Demo
+```bash
+python examples/causal_discovery_demo.py
+```
+Shows: structure discovery, intervention simulation, counterfactual reasoning, and simple structure matching analysis.
 
-# Configure the autonomous system
-config = ASAGIConfig(
-    enable_meta_cognition=True,
-    enable_goal_emergence=True,
-    intrinsic_motivation_weight=1.0,
-    use_pareto_navigation=True,
-    # Note: No reward functions, loss objectives, or external goals!
-)
+---
 
-# Create the system
-asagi = AutonomousSelfOrganizingAGI(config)
+## 🧠 Reward-Free Principles (Unchanged)
+- No external rewards or loss functions
+- Goals emerge from intrinsic signals: predictive dissonance, compression gains, uncertainty reduction, novelty topology
+- Multi-objective decision making without scalarization (Pareto frontier navigation)
 
-# Start autonomous operation (no external rewards needed)
-autonomous_behavior = asagi.autonomous_operation(
-    environment_interface=env,  # Optional environment interaction
-    operation_time=3600,        # Run for 1 hour
-    curiosity_threshold=0.7     # Internal curiosity activation level
-)
+---
 
-# The system will:
-# 1. Observe and build internal models
-# 2. Identify knowledge gaps and inconsistencies
-# 3. Generate its own goals and experiments
-# 4. Learn through intrinsic motivation
-# 5. Develop emergent skills and behaviors
+## 📁 Project Structure (Updated)
+```
+asagi/
+  core/
+    autonomous_system.py         # Integrated system (GNN causal wired)
+    meta_cognition.py            # High-order meta-cognition
+    causal_reasoning.py          # GNN-based causal engine (NEW)
+    _experimental_builders.py    # Concrete experimental module builders
+  intrinsic/
+    signal_synthesizer.py        # Intrinsic motivation signals
+  meta_learning/
+    pareto_navigator.py          # Loss-free multi-objective decisions
+  operational/
+    world_model.py               # Residual+Transformer+CPP world model (UPG)
+    consistency_learner.py       # EMA teacher alignment (UPG)
+examples/
+  basic_autonomous_operation.py  # Integrated demo (UPG)
+  causal_discovery_demo.py       # Causal reasoning demo (NEW)
 ```
 
 ---
 
-## 🧠 Key Innovations
-
-### 1. **Reward-Free Learning**
-- No external reward signals or loss functions
-- Behavior driven by intrinsic information-theoretic principles
-- Goals emerge from internal consistency requirements
-- Learning happens through curiosity and model improvement
-
-### 2. **Information-Theoretic Motivation**
-```python
-class IntrinsicMotivation:
-    def compute_drive(self, observation, internal_model):
-        # Multiple intrinsic signals, no external rewards
-        signals = {
-            'predictive_dissonance': self.kl_divergence(observation, prediction),
-            'compression_gain': self.mdl_improvement(new_hypothesis),
-            'uncertainty_reduction': self.entropy_decrease(posterior),
-            'novelty_score': self.manifold_curvature_change(representation)
-        }
-        
-        # Multi-objective decision making (no scalar loss!)
-        return self.pareto_navigator.select_action(signals)
-```
+## 📊 Metrics & Logging
+- Autonomous Operation Summary: motivation, coherence, autonomy, causal discoveries
+- Causal Graph Sparsity: [0,1] — monitor stability (ideal ~0.2–0.6)
+- CPC Signal & Consistency Score: self-supervised learning health
 
 ---
 
-## 📊 Key Advantages Over Traditional AI
-
-| Aspect | Traditional AI | Autonomous Self-Organizing AGI |
-|--------|---------------|--------------------------------|
-| **Motivation** | External rewards/losses | Intrinsic curiosity & information theory |
-| **Goals** | Human-specified tasks | Self-generated objectives |
-| **Learning** | Supervised/reinforcement | Self-supervised discovery |
-| **Behavior** | Task-specific optimization | Emergent general intelligence |
-| **Adaptation** | Fine-tuning on new tasks | Autonomous exploration & learning |
-| **Creativity** | Limited to training distribution | Unbounded curiosity-driven exploration |
-| **Robustness** | Brittle to distribution shift | Adaptive to novel situations |
+## ⚠️ Notes on Scaling
+- Compute grows with number of causal variables; keep N modest on small GPUs
+- Use sparsity/temperature controls; add top‑k masking for larger graphs
+- All components are batched and vectorized for GPU parallelism
 
 ---
 
 ## 📄 License
-
-MIT License - Because autonomous intelligence should be free to explore and grow.
+MIT License
 
 ---
 
-**"Intelligence without instruction, learning without loss, goals without guidance."**
-
-**Built with 🧠 for the future of autonomous artificial intelligence**
+## 🙏 Acknowledgments
+Information theory, causal ML, meta-learning, and self-supervised learning communities. This project embraces reward-free, self-organizing intelligence guided by intrinsic principles.
