@@ -6,7 +6,7 @@
 [![No Rewards](https://img.shields.io/badge/Paradigm-Reward--Free-red.svg)](#)
 [![Self-Organizing](https://img.shields.io/badge/Behavior-Autonomous-green.svg)](#)
 
-A fully integrated, reward-free AGI system featuring intrinsic motivation, high-order meta-cognition, GNN-based causal reasoning, and multi-objective decision making. This upgraded version is now production-ready with comprehensive utilities for logging, checkpointing, metrics tracking, and visualization.
+A fully integrated, reward-free AI system featuring intrinsic motivation, high-order meta-cognition, GNN-based causal reasoning, and multi-objective decision making. This upgraded version is now production-ready with comprehensive utilities for logging, checkpointing, metrics tracking, and visualization.
 
 ---
 
