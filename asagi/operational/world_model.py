@@ -15,6 +15,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from typing import Dict, Optional
+import logging
+
+logger = logging.getLogger(__name__)
 
 class GatedResBlock(nn.Module):
     def __init__(self, dim: int):
@@ -82,11 +85,29 @@ class InternalWorldModel(nn.Module):
         return seq
 
     def forward(self, current_features: torch.Tensor, proposed_actions: torch.Tensor, horizon: Optional[int] = None) -> Dict[str, torch.Tensor]:
+        # Input validation
+        if current_features.ndim != 2:
+            raise ValueError(f"Expected 2D current_features, got shape {current_features.shape}")
+        if current_features.shape[-1] != self.feature_dim:
+            raise ValueError(f"Feature dimension mismatch: expected {self.feature_dim}, got {current_features.shape[-1]}")
+        
+        # Check for NaN/Inf
+        if torch.isnan(current_features).any() or torch.isinf(current_features).any():
+            logger.warning("Invalid values detected in current_features")
+            current_features = torch.nan_to_num(current_features, nan=0.0, posinf=1e6, neginf=-1e6)
+        
         T = horizon or self.horizon
-        preds = self.rollout(current_features, T)
-        cpc = self.cpc(preds)
-        return {
-            'predictions': preds,          # [B,T,D]
-            'final_state': preds[:, -1],   # [B,D]
-            'cpc_signal': cpc['cpc_signal'] # [B]
-        }
+        if T <= 0:
+            raise ValueError(f"Horizon must be positive, got {T}")
+        
+        try:
+            preds = self.rollout(current_features, T)
+            cpc = self.cpc(preds)
+            return {
+                'predictions': preds,          # [B,T,D]
+                'final_state': preds[:, -1],   # [B,D]
+                'cpc_signal': cpc['cpc_signal'] # [B]
+            }
+        except Exception as e:
+            logger.error(f"Error in world model forward pass: {e}")
+            raise

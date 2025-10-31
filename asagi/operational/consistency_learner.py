@@ -12,6 +12,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from typing import Dict
+import logging
+
+logger = logging.getLogger(__name__)
 
 class EMA(nn.Module):
     def __init__(self, module: nn.Module, decay: float = 0.99):
@@ -46,23 +49,38 @@ class ConsistencyBasedLearner(nn.Module):
         self.register_buffer('consistency_score', torch.tensor(0.0))
     
     def forward(self, observations: torch.Tensor, predictions: torch.Tensor, internal_state: torch.Tensor, cpc_signal: torch.Tensor = None) -> Dict[str, torch.Tensor]:
-        # Use first-step prediction to align
-        pred_now = predictions[:, 0]
-        proj_obs = self.online(observations)
-        with torch.no_grad():
-            self.target.update(self.online)
-            proj_pred = self.target.module(pred_now)
-        align = F.cosine_similarity(proj_obs, proj_pred, dim=-1)
-        self.consistency_score = 0.9 * self.consistency_score + 0.1 * align.mean().detach()
+        # Input validation
+        if observations.shape[-1] != self.feature_dim:
+            raise ValueError(f"Observation dimension mismatch: expected {self.feature_dim}, got {observations.shape[-1]}")
+        if predictions.ndim < 2:
+            raise ValueError(f"Predictions must be at least 2D, got shape {predictions.shape}")
         
-        # Optional CPC guidance: push alignment when CPC is strong
-        if cpc_signal is not None:
-            weight = torch.sigmoid(cpc_signal).unsqueeze(-1)
-            proj_obs = proj_obs * (1 + 0.1*weight)
+        # Check for invalid values
+        if torch.isnan(observations).any() or torch.isinf(observations).any():
+            logger.warning("Invalid values in observations, applying nan_to_num")
+            observations = torch.nan_to_num(observations, nan=0.0, posinf=1e6, neginf=-1e6)
         
-        adjustments = proj_obs  # suggest moving internal state toward consistent subspace
-        return {
-            'alignment': align,
-            'adjustments': adjustments,
-            'consistency_score': self.consistency_score.unsqueeze(0)
-        }
+        try:
+            # Use first-step prediction to align
+            pred_now = predictions[:, 0]
+            proj_obs = self.online(observations)
+            with torch.no_grad():
+                self.target.update(self.online)
+                proj_pred = self.target.module(pred_now)
+            align = F.cosine_similarity(proj_obs, proj_pred, dim=-1)
+            self.consistency_score = 0.9 * self.consistency_score + 0.1 * align.mean().detach()
+            
+            # Optional CPC guidance: push alignment when CPC is strong
+            if cpc_signal is not None:
+                weight = torch.sigmoid(cpc_signal).unsqueeze(-1)
+                proj_obs = proj_obs * (1 + 0.1*weight)
+            
+            adjustments = proj_obs  # suggest moving internal state toward consistent subspace
+            return {
+                'alignment': align,
+                'adjustments': adjustments,
+                'consistency_score': self.consistency_score.unsqueeze(0)
+            }
+        except Exception as e:
+            logger.error(f"Error in consistency learner forward pass: {e}")
+            raise

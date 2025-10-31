@@ -1,4 +1,4 @@
-# Autonomous Self-Organizing AGI System (INTEGRATED) 🧠✨
+# Autonomous Self-Organizing AGI System (Upgraded & Production-Ready) 🧠✨
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange.svg)](https://pytorch.org/)
@@ -6,20 +6,29 @@
 [![No Rewards](https://img.shields.io/badge/Paradigm-Reward--Free-red.svg)](#)
 [![Self-Organizing](https://img.shields.io/badge/Behavior-Autonomous-green.svg)](#)
 
-A fully integrated, reward-free AGI system featuring intrinsic motivation, high-order meta-cognition, GNN-based causal reasoning, and multi-objective decision making. Now includes upgraded world modeling (residual dynamics + Transformer mixer + CPC), EMA-based consistency learning, and concrete experimental modules.
+A fully integrated, reward-free AGI system featuring intrinsic motivation, high-order meta-cognition, GNN-based causal reasoning, and multi-objective decision making. This upgraded version is now production-ready with comprehensive utilities for logging, checkpointing, metrics tracking, and visualization.
 
 ---
 
-## 🚀 What’s New (Integrated Engine)
-- GNN-based Causal Reasoning Module: structure discovery, interventions (do-operator), counterfactuals, causal effect estimation ([asagi/core/causal_reasoning.py](asagi/core/causal_reasoning.py))
-- Upgraded World Model: multi-scale residual dynamics + optional Transformer mixer + CPC self-supervision ([asagi/operational/world_model.py](asagi/operational/world_model.py))
-- Upgraded Consistency Learner: BYOL-style EMA teacher alignment, CPC-guided ([asagi/operational/consistency_learner.py](asagi/operational/consistency_learner.py))
-- Autonomous System Integrated: causal module wired in, with compute knobs ([asagi/core/autonomous_system.py](asagi/core/autonomous_system.py))
-- New Demos: integrated autonomous demo and causal discovery demo in [examples/](examples)
+## 🚀 What’s New (Upgraded Engine)
+
+This major upgrade focuses on robustness, usability, and observability, making the ASAGI system more practical for real-world experiments.
+
+- **Production-Ready Utilities (`asagi/utils`):**
+  - **Checkpoint Manager:** Automatically save and load model states, with versioning and metadata.
+  - **Advanced Logger:** Structured, colored console logging and persistent file-based logs.
+  - **Metrics Tracker:** Track, compute, and save dozens of system metrics over time.
+  - **Visualizer:** Automatically generate plots for causal graphs, intrinsic motivation, and system performance.
+- **Enhanced Demo (`examples/enhanced_demo.py`):** A new comprehensive script that showcases all new utilities in action.
+- **Robustness & Validation:** Core modules have been updated with input validation, error handling, and more extensive type hints.
+- **Comprehensive Test Suite (`tests/`):** A full suite of unit and integration tests to ensure system stability and correctness.
 
 ---
 
-## 🏗️ Updated Architecture Overview
+## 🏗️ System Architecture
+
+The core architecture remains reward-free and self-organizing:
+
 ```
 Meta-Cognition (goals, self-reflection)
         ↕
@@ -31,111 +40,110 @@ Operational Layer
   - World Model (Residual + Transformer Mixer + CPC)
   - Consistency Learner (EMA Teacher Alignment)
   - Causal Reasoning (GNN): structure, do(), counterfactuals, effects
+        ↕
+System Utilities (Logging, Checkpoints, Metrics, Visualization)
 ```
 
-- Reward-free: no external reward functions, task losses, or policy objectives
-- Goals emerge from intrinsic signals and meta-cognitive analysis
-- Causal reasoning augments planning and analysis without scalar losses
-
----
-
-## 🔬 Key Modules (Integrated)
-- World Model: residual blocks, optional Transformer encoder, CPC head for self-supervised temporal consistency
-- Consistency Learner: EMA teacher/student projections; alignment score used for internal coherence
-- Causal Reasoning (GNN):
-  - Variable extraction → attention-style edge scoring → directed adjacency
-  - Vectorized message passing → causal propagation
-  - Interventions do(X=x), counterfactual analysis, pairwise effect estimation
-- Meta-Cognition: self-reflection, knowledge gaps, autonomous goal generation
-- Pareto Navigator: preference learning + constraint satisfaction without scalarization
-
----
-
-## ⚙️ Compute & Stability Knobs
-Add these to ASAGIConfig to control cost and stability:
-- causal_num_variables (default 8): increase carefully; cost ~ O(B·N²·H)
-- causal_num_layers (default 2)
-- causal_hidden_dim (default 128)
-- enable_causal_reasoning (default True)
-- world_model_use_transformer (default True)
-- world_model_depth (default 4)
-
-Recommended for single GPU/Colab:
-- N=8, layers=2, hidden=128; temperature/sparsity for adjacency; consider top-k masking for larger N.
+- **Reward-free:** No external reward functions, task losses, or policy objectives.
+- **Emergent Goals:** Goals emerge from intrinsic signals and meta-cognitive analysis.
+- **Observable:** All internal states and metrics can be logged, saved, and visualized.
 
 ---
 
 ## 🚦 Quick Start
 
 ### Installation
+
 ```bash
+# Clone the repository
 git clone https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI.git
 cd Autonomous-Self-Organizing-AGI
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Install the package in editable mode
 pip install -e .
 ```
 
-### Integrated Autonomous Demo
-```bash
-python examples/basic_autonomous_operation.py
-```
-Shows: intrinsic motivation (no rewards), upgraded world model (CPC), EMA consistency, GNN causal reasoning, Pareto navigation, emergent skills.
+### Enhanced Demonstration
 
-### Causal Discovery Demo
+Run the new, comprehensive demo to see all features in action. This is the recommended way to start.
+
 ```bash
-python examples/causal_discovery_demo.py
+python examples/enhanced_demo.py
 ```
-Shows: structure discovery, intervention simulation, counterfactual reasoning, and simple structure matching analysis.
+
+This demo will:
+- Initialize the full ASAGI system.
+- Run for a number of steps, showing live, colored logging.
+- Automatically save logs to the `/logs` directory.
+- Automatically save performance metrics to the `/metrics` directory.
+- Automatically generate and save visualizations to the `/visualizations` directory.
+- Automatically save a final model checkpoint to the `/checkpoints` directory.
+
+### Running Tests
+
+To ensure all components are working correctly, run the test suite:
+
+```bash
+python tests/test_system.py
+```
 
 ---
 
-## 🧠 Reward-Free Principles (Unchanged)
-- No external rewards or loss functions
-- Goals emerge from intrinsic signals: predictive dissonance, compression gains, uncertainty reduction, novelty topology
-- Multi-objective decision making without scalarization (Pareto frontier navigation)
+## 📁 Project Structure (Upgraded)
 
----
-
-## 📁 Project Structure (Updated)
 ```
 asagi/
-  core/
-    autonomous_system.py         # Integrated system (GNN causal wired)
-    meta_cognition.py            # High-order meta-cognition
-    causal_reasoning.py          # GNN-based causal engine (NEW)
-    _experimental_builders.py    # Concrete experimental module builders
-  intrinsic/
-    signal_synthesizer.py        # Intrinsic motivation signals
-  meta_learning/
-    pareto_navigator.py          # Loss-free multi-objective decisions
-  operational/
-    world_model.py               # Residual+Transformer+CPP world model (UPG)
-    consistency_learner.py       # EMA teacher alignment (UPG)
+  core/                      # Core system logic (unchanged)
+    autonomous_system.py
+    meta_cognition.py
+    causal_reasoning.py
+  intrinsic/                 # Intrinsic motivation (unchanged)
+    signal_synthesizer.py
+  meta_learning/             # Multi-objective learning (unchanged)
+    pareto_navigator.py
+  operational/               # World model and consistency (unchanged)
+    world_model.py
+    consistency_learner.py
+  utils/                     # Production-ready utilities (NEW)
+    checkpoint.py
+    logging.py
+    metrics.py
+    visualization.py
+    validation.py
 examples/
-  basic_autonomous_operation.py  # Integrated demo (UPG)
-  causal_discovery_demo.py       # Causal reasoning demo (NEW)
+  enhanced_demo.py           # Main demo with all features (NEW)
+  basic_autonomous_operation.py
+  causal_discovery_demo.py
+tests/
+  test_system.py             # Comprehensive test suite (NEW)
+checkpoints/                 # Saved model checkpoints (NEW)
+logs/                        # Log files (NEW)
+metrics/                     # Saved metrics data (NEW)
+visualizations/              # Saved plots and graphs (NEW)
 ```
 
 ---
 
-## 📊 Metrics & Logging
-- Autonomous Operation Summary: motivation, coherence, autonomy, causal discoveries
-- Causal Graph Sparsity: [0,1] — monitor stability (ideal ~0.2–0.6)
-- CPC Signal & Consistency Score: self-supervised learning health
+## 📊 System Utilities & Observability
 
----
+The upgraded system includes a suite of utilities for better analysis and robustness.
 
-## ⚠️ Notes on Scaling
-- Compute grows with number of causal variables; keep N modest on small GPUs
-- Use sparsity/temperature controls; add top‑k masking for larger graphs
-- All components are batched and vectorized for GPU parallelism
+- **Logging:** All system outputs are logged to both the console (with colors) and a timestamped file in the `/logs` directory.
+- **Metrics:** The `MetricsTracker` captures dozens of metrics (e.g., system coherence, autonomy level, causal graph sparsity) and saves them as a JSON file in the `/metrics` directory.
+- **Visualization:** The `Visualizer` automatically generates PNG plots for key system dynamics, including intrinsic signals and causal graphs, saving them in the `/visualizations` directory.
+- **Checkpoints:** The `CheckpointManager` saves the full model and optimizer state, allowing you to resume experiments or deploy a trained model. Checkpoints are stored in the `/checkpoints` directory.
 
 ---
 
 ## 📄 License
+
 MIT License
 
 ---
 
 ## 🙏 Acknowledgments
-Information theory, causal ML, meta-learning, and self-supervised learning communities. This project embraces reward-free, self-organizing intelligence guided by intrinsic principles.
+
+This project stands on the shoulders of giants in the information theory, causal machine learning, meta-learning, and self-supervised learning communities. It embraces a future of reward-free, self-organizing intelligence guided by intrinsic principles.
