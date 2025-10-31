@@ -6,6 +6,8 @@ Package init that wires together the core autonomous AGI components.
 This system is reward-free, goal-emergent, and meta-cognitively driven.
 """
 
+__version__ = "0.1.0"
+
 from .core.autonomous_system import (
     AutonomousSelfOrganizingAGI,
     ASAGIConfig,
@@ -32,6 +34,8 @@ from .meta_learning.pareto_navigator import (
 )
 
 __all__ = [
+    # Version
+    "__version__",
     # Main system
     "AutonomousSelfOrganizingAGI",
     "ASAGIConfig",

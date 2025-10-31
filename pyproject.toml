@@ -4,24 +4,100 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "asagi"
-version = "0.0.1"
-description = "Autonomous Self-Organizing AGI: reward-free, self-goal-setting architecture with high-order meta-cognition"
+version = "0.1.0"
+description = "Autonomous Self-Organizing AGI: reward-free, self-goal-setting architecture with production-ready utilities"
 authors = [{name = "ASAGI Dev", email = "dev@example.com"}]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
+  # Core Deep Learning
   "torch>=2.0.0",
   "torchvision>=0.15.0",
   "numpy>=1.21.0",
+  
+  # Scientific Computing
   "scipy>=1.9.0",
+  "scikit-learn>=1.1.0",
+  
+  # Tensor Operations
   "einops>=0.6.0",
   "opt-einsum>=3.3.0",
-  "scikit-learn>=1.1.0",
+  
+  # Graph Operations (for causal reasoning)
   "networkx>=2.8.0",
+  
+  # Mathematical Optimization (for Pareto navigation)
+  "cvxpy>=1.2.0",
+  
+  # Visualization (for utilities)
+  "matplotlib>=3.5.0",
+  "seaborn>=0.11.0",
+  
+  # Utilities
+  "tqdm>=4.64.0",
+  "Pillow>=9.0.0",
+  "psutil>=5.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-cov>=3.0.0",
+  "black>=22.0.0",
+  "flake8>=4.0.0",
+  "mypy>=0.950",
+]
+
+full = [
+  # State Space Models (optional)
+  "mamba-ssm>=1.0.0",
+  
+  # Uncertainty Quantification (optional)
+  "torch-uncertainty>=0.2.0",
+  
+  # Environment Support (optional)
   "gymnasium>=0.27.0",
+  "pybullet>=3.2.0",
+  
+  # Advanced Visualization (optional)
+  "plotly>=5.0.0",
+  "wandb>=0.13.0",
+  "tensorboard>=2.8.0",
+  
+  # Configuration Management (optional)
+  "hydra-core>=1.2.0",
+  "omegaconf>=2.2.0",
+  
+  # Memory Profiling (optional)
+  "memory-profiler>=0.60.0",
 ]
 
 [project.urls]
 Homepage = "https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI"
+Repository = "https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI"
 Issues = "https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI/issues"
+Changelog = "https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["asagi", "asagi.core", "asagi.intrinsic", "asagi.meta_learning", "asagi.operational", "asagi.utils"]
+
+[tool.setuptools.package-data]
+asagi = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=asagi --cov-report=html --cov-report=term"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
