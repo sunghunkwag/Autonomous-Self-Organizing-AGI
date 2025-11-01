@@ -1,4 +1,4 @@
-# Autonomous Self-Organizing AI System (Upgraded & Production-Ready) 
+# Autonomous Self-Organizing AI System
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange.svg)](https://pytorch.org/)
@@ -6,35 +6,35 @@
 [![No Rewards](https://img.shields.io/badge/Paradigm-Reward--Free-red.svg)](#)
 [![Self-Organizing](https://img.shields.io/badge/Behavior-Autonomous-green.svg)](#)
 
-A fully integrated, reward-free AI system featuring intrinsic motivation, high-order meta-cognition, GNN-based causal reasoning, and multi-objective decision making. This upgraded version is now production-ready with comprehensive utilities for logging, checkpointing, metrics tracking, and visualization.
+A reward-free AI system featuring intrinsic motivation, meta-cognition, GNN-based causal reasoning, and multi-objective decision making. Includes utilities for logging, checkpointing, metrics tracking, and visualization.
 
 ---
 
-## 🚀 What’s New (Upgraded Engine)
+## Recent Updates
 
-This major upgrade focuses on robustness, usability, and observability, making the ASAGI system more practical for real-world experiments.
+This version focuses on robustness, usability, and observability for research experiments.
 
-- **Production-Ready Utilities (`asagi/utils`):**
-  - **Checkpoint Manager:** Automatically save and load model states, with versioning and metadata.
-  - **Advanced Logger:** Structured, colored console logging and persistent file-based logs.
-  - **Metrics Tracker:** Track, compute, and save dozens of system metrics over time.
-  - **Visualizer:** Automatically generate plots for causal graphs, intrinsic motivation, and system performance.
-- **Enhanced Demo (`examples/enhanced_demo.py`):** A new comprehensive script that showcases all new utilities in action.
-- **Robustness & Validation:** Core modules have been updated with input validation, error handling, and more extensive type hints.
-- **Comprehensive Test Suite (`tests/`):** A full suite of unit and integration tests to ensure system stability and correctness.
+- **System Utilities (`asagi/utils`):**
+  - **Checkpoint Manager:** Save and load model states with versioning and metadata
+  - **Logger:** Structured console logging and persistent file-based logs
+  - **Metrics Tracker:** Track and save system metrics over time
+  - **Visualizer:** Generate plots for causal graphs, intrinsic motivation, and performance
+- **Enhanced Demo (`examples/enhanced_demo.py`):** Comprehensive script showcasing utilities
+- **Robustness:** Core modules updated with input validation and error handling
+- **Test Suite (`tests/`):** Unit and integration tests for system stability
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
-The core architecture remains reward-free and self-organizing:
+The core architecture is reward-free and self-organizing:
 
 ```
 Meta-Cognition (goals, self-reflection)
         ↕
 Intrinsic Signal Synthesizer (dissonance, compression gain, uncertainty, novelty)
         ↕
-Pareto Navigator (loss-free multi-objective decisions)
+Pareto Navigator (multi-objective decisions)
         ↕
 Operational Layer
   - World Model (Residual + Transformer Mixer + CPC)
@@ -44,20 +44,20 @@ Operational Layer
 System Utilities (Logging, Checkpoints, Metrics, Visualization)
 ```
 
-- **Reward-free:** No external reward functions, task losses, or policy objectives.
-- **Emergent Goals:** Goals emerge from intrinsic signals and meta-cognitive analysis.
-- **Observable:** All internal states and metrics can be logged, saved, and visualized.
+- **Reward-free:** No external reward functions, task losses, or policy objectives
+- **Emergent Goals:** Goals emerge from intrinsic signals and meta-cognitive analysis
+- **Observable:** Internal states and metrics can be logged, saved, and visualized
 
 ---
 
-## 🚦 Quick Start
+## Quick Start
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/sunghunkwag/Autonomous-Self-Organizing-AGI.git
-cd Autonomous-Self-Organizing-AGI
+git clone https://github.com/sunghunkwag/Autonomous-Self-Organizing-AI.git
+cd Autonomous-Self-Organizing-AI
 
 # Install dependencies
 pip install -r requirements.txt
@@ -66,25 +66,25 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-### Enhanced Demonstration
+### Demo
 
-Run the new, comprehensive demo to see all features in action. This is the recommended way to start.
+Run the comprehensive demo to see features in action:
 
 ```bash
 python examples/enhanced_demo.py
 ```
 
 This demo will:
-- Initialize the full ASAGI system.
-- Run for a number of steps, showing live, colored logging.
-- Automatically save logs to the `/logs` directory.
-- Automatically save performance metrics to the `/metrics` directory.
-- Automatically generate and save visualizations to the `/visualizations` directory.
-- Automatically save a final model checkpoint to the `/checkpoints` directory.
+- Initialize the ASAGI system
+- Run for a number of steps with live logging
+- Save logs to the `/logs` directory
+- Save performance metrics to the `/metrics` directory
+- Generate and save visualizations to the `/visualizations` directory
+- Save a final model checkpoint to the `/checkpoints` directory
 
 ### Running Tests
 
-To ensure all components are working correctly, run the test suite:
+To ensure components are working correctly:
 
 ```bash
 python tests/test_system.py
@@ -92,58 +92,58 @@ python tests/test_system.py
 
 ---
 
-## 📁 Project Structure (Upgraded)
+## Project Structure
 
 ```
 asagi/
-  core/                      # Core system logic (unchanged)
+  core/                      # Core system logic
     autonomous_system.py
     meta_cognition.py
     causal_reasoning.py
-  intrinsic/                 # Intrinsic motivation (unchanged)
+  intrinsic/                 # Intrinsic motivation
     signal_synthesizer.py
-  meta_learning/             # Multi-objective learning (unchanged)
+  meta_learning/             # Multi-objective learning
     pareto_navigator.py
-  operational/               # World model and consistency (unchanged)
+  operational/               # World model and consistency
     world_model.py
     consistency_learner.py
-  utils/                     # Production-ready utilities (NEW)
+  utils/                     # System utilities
     checkpoint.py
     logging.py
     metrics.py
     visualization.py
     validation.py
 examples/
-  enhanced_demo.py           # Main demo with all features (NEW)
+  enhanced_demo.py           # Main demo
   basic_autonomous_operation.py
   causal_discovery_demo.py
 tests/
-  test_system.py             # Comprehensive test suite (NEW)
-checkpoints/                 # Saved model checkpoints (NEW)
-logs/                        # Log files (NEW)
-metrics/                     # Saved metrics data (NEW)
-visualizations/              # Saved plots and graphs (NEW)
+  test_system.py             # Test suite
+checkpoints/                 # Saved model checkpoints
+logs/                        # Log files
+metrics/                     # Saved metrics data
+visualizations/              # Saved plots and graphs
 ```
 
 ---
 
-## 📊 System Utilities & Observability
+## System Utilities
 
-The upgraded system includes a suite of utilities for better analysis and robustness.
+The system includes utilities for analysis and robustness:
 
-- **Logging:** All system outputs are logged to both the console (with colors) and a timestamped file in the `/logs` directory.
-- **Metrics:** The `MetricsTracker` captures dozens of metrics (e.g., system coherence, autonomy level, causal graph sparsity) and saves them as a JSON file in the `/metrics` directory.
-- **Visualization:** The `Visualizer` automatically generates PNG plots for key system dynamics, including intrinsic signals and causal graphs, saving them in the `/visualizations` directory.
-- **Checkpoints:** The `CheckpointManager` saves the full model and optimizer state, allowing you to resume experiments or deploy a trained model. Checkpoints are stored in the `/checkpoints` directory.
+- **Logging:** System outputs logged to console (with colors) and timestamped files in `/logs`
+- **Metrics:** MetricsTracker captures metrics (system coherence, autonomy level, causal graph sparsity) and saves as JSON in `/metrics`
+- **Visualization:** Visualizer generates PNG plots for system dynamics, intrinsic signals, and causal graphs in `/visualizations`
+- **Checkpoints:** CheckpointManager saves full model and optimizer state for resuming experiments in `/checkpoints`
 
 ---
 
-## 📄 License
+## License
 
 MIT License
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-This project stands on the shoulders of giants in the information theory, causal machine learning, meta-learning, and self-supervised learning communities. It embraces a future of reward-free, self-organizing intelligence guided by intrinsic principles.
+This project builds on research in information theory, causal machine learning, meta-learning, and self-supervised learning communities. It explores reward-free, self-organizing intelligence guided by intrinsic principles.
